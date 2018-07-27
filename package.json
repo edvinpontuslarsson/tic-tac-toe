@@ -9,7 +9,8 @@
   },
   "keywords": [
     "tic-tac-toe",
-    "JavaScript"
+    "JavaScript",
+    "Webpack"
   ],
   "author": "Edvin Larsson",
   "license": "ISC",
