@@ -1,0 +1,25 @@
+{
+  "name": "tictactoe",
+  "version": "1.0.0",
+  "description": "A tic tac toe game made with JavaScript",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tic-tac-toe",
+    "JavaScript"
+  ],
+  "author": "Edvin Larsson",
+  "license": "ISC",
+  "dependencies": {
+    "css-loader": "^0.28.4",
+    "file-loader": "^0.11.2",
+    "standard": "*",
+    "standard-loader": "^6.0.1",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.5.0"
+  }
+}

@@ -1,0 +1,42 @@
+body {
+    background-color: lightgray;
+}
+
+#playerTurn {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 48px;
+    margin-bottom: 75px;
+}
+
+#board {
+    display: grid;
+    grid-template-rows: 150px 150px 150px;
+    grid-template-columns: 150px 150px 150px;
+    /* To center: */    
+    margin: 0 auto;
+    width: 450px;
+}
+
+.board-box {
+    border: solid 2px black;
+    color: red;
+    font-size: 150px;
+    line-height: 150px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.board-box:hover {
+    cursor: pointer;
+    background-color: white;
+}
+
+.filled-board-box:hover {
+    cursor: auto;
+    background-color: lightgray;
+}
+
+.hide {
+    visibility: hidden;
+}
