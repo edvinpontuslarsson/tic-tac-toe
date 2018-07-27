@@ -1,6 +1,7 @@
 'use strict'
 
 import lib from '../lib/lib'
+import updateView from '../view/updateView'
 
 /**
  * Triggers game logic when unfilled box gets clicked
@@ -14,14 +15,14 @@ const playerAction = (event, jsBoard) => {
     const player = lib._('playerTurn')
     const boxId = event.target.id
 
-    const playerMark = markBox(player, boxId)
+    const playerMark = updateView.markBox(player, boxId)
     updateBoardValue(boxId, jsBoard, playerMark)
     const gameOver = isGameOver(jsBoard)
 
     if (gameOver) {
-      theWinnerTakesItAll(player)
+      updateView.theWinnerTakesItAll(player)
     } else {
-      changeTurn(player)
+      updateView.changeTurn(player)
     }
   }
 }
@@ -56,36 +57,6 @@ function updateBoardValue (boxId, jsBoard, playerMark) {
 }
 
 /**
-   * Updates HTML with mark in clicked box
-   * @param {HTMLElement} player - current player
-   * @param {String} boxId - id of HTML-element
-   */
-function markBox (player, boxId) {
-  const box = lib._(boxId)
-  const mark = player.innerHTML === 'Player 1'
-    ? 'X'
-    : 'O'
-
-  box.innerHTML = mark
-
-  box.classList.add('filled-board-box')
-
-  return mark
-}
-
-/**
-   * Updates HTML, switches player
-   * @param {HTMLElement} player - current player
-   */
-function changeTurn (player) {
-  const newPlayer = player.innerHTML === 'Player 1'
-    ? 'Player 2'
-    : 'Player 1'
-
-  player.innerHTML = newPlayer
-}
-
-/**
    * Runs through board object to see if there is a winner
    * @param {Object} jsBoard - board object
    * @returns {Boolean} true if there is a winner
@@ -106,21 +77,4 @@ function isGameOver (jsBoard) {
   })
 
   return isOver
-}
-
-/**
-   * Updates HTML, stops clickability and displays who the winner is
-   * @param {HTMLElement} player - current player
-   */
-function theWinnerTakesItAll (player) {
-  const boardBoxes = document
-    .getElementsByClassName('board-box')
-
-  // to remove event listener from each box
-  for (let i = 0; i < boardBoxes.length; i++) {
-    boardBoxes[i].outerHTML =
-              boardBoxes[i].outerHTML
-  }
-
-  player.innerHTML = `${player.innerHTML} wins!`
 }
