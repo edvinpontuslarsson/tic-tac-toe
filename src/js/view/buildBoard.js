@@ -1,6 +1,6 @@
 'use strict'
 
-const buildBoard = (_, playerAction) => {
+const buildBoard = (_, Game) => {
   /**
      * @returns {Object} object with arrays
      * to keep track of three-in-rows
@@ -37,7 +37,7 @@ const buildBoard = (_, playerAction) => {
         box.style.gridColumnStart = j + 1
 
         box.addEventListener('click', event => {
-          playerAction(event, jsBoard)
+          Game(event, jsBoard)
         })
 
         const boardSection = _('board')
