@@ -1,5 +1,8 @@
 'use strict'
 
+/**
+ * Object with general helper functions
+ */
 const lib = {
   /**
      * @param {String} id - element id
