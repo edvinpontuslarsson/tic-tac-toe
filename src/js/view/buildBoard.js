@@ -1,6 +1,8 @@
 'use strict'
 
-const buildBoard = (_, Game) => {
+import lib from '../lib/lib'
+
+const buildBoard = (game) => {
   /**
      * @returns {Object} object with arrays
      * to keep track of three-in-rows
@@ -25,7 +27,7 @@ const buildBoard = (_, Game) => {
      * @param {Object} jsBoard - board object
      */
   const putHtmlBoard = (jsBoard) => {
-    _('playerTurn').innerHTML = 'Player 1'
+    lib._('playerTurn').innerHTML = 'Player 1'
 
     for (let i = 0; i < 3; i++) {
       for (let j = 0; j < 3; j++) {
@@ -37,10 +39,10 @@ const buildBoard = (_, Game) => {
         box.style.gridColumnStart = j + 1
 
         box.addEventListener('click', event => {
-          Game(event, jsBoard)
+          game(event, jsBoard)
         })
 
-        const boardSection = _('board')
+        const boardSection = lib._('board')
         boardSection.appendChild(box)
       }
     }
@@ -50,4 +52,4 @@ const buildBoard = (_, Game) => {
   putHtmlBoard(jsBoard)
 }
 
-module.exports = buildBoard
+export default buildBoard

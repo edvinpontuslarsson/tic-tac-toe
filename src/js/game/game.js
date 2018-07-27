@@ -1,11 +1,6 @@
 'use strict'
 
-// put _ in a lib
-
-/**
- * @param {String} id - element id
- */
-const _ = id => document.getElementById(id)
+import lib from '../lib/lib'
 
 /**
  * Triggers game logic when unfilled box gets clicked
@@ -16,7 +11,7 @@ const playerAction = (event, jsBoard) => {
   if (event.target.className !==
           'filled-board-box') {
     // Player 1 / Player 2
-    const player = _('playerTurn')
+    const player = lib._('playerTurn')
     const boxId = event.target.id
 
     const playerMark = markBox(player, boxId)
@@ -66,7 +61,7 @@ function updateBoardValue (boxId, jsBoard, playerMark) {
    * @param {String} boxId - id of HTML-element
    */
 function markBox (player, boxId) {
-  const box = _(boxId)
+  const box = lib._(boxId)
   const mark = player.innerHTML === 'Player 1'
     ? 'X'
     : 'O'
