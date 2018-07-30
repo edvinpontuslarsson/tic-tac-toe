@@ -1,12 +1,12 @@
 'use strict'
 
-import putBoard from './view/putBoard'
-import game from './game/game'
+import putHTMLBoard from './putHTMLBoard'
+import game from './game'
 
   // runs application
   ;(() => {
   const jsBoard = makeJSBoard()
-  putBoard(jsBoard, game)
+  putHTMLBoard(jsBoard, game)
 })()
 
 /**

@@ -1,6 +1,6 @@
 'use strict'
 
-import lib from '../lib/lib'
+import lib from './lib'
 
 /**
  * Appends playing board to HTML,
