@@ -14,7 +14,7 @@ const playerAction = (event, jsBoard) => {
     const player = lib._('playerTurn')
     const boxId = event.target.id
 
-    // b
+    // boxMark marks html box and returns mark
     const playerMark = boxMark(player, boxId)
     updateBoardValue(boxId, jsBoard, playerMark)
     const gameOver = isGameOver(jsBoard)
