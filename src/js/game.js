@@ -1,6 +1,7 @@
 'use strict'
 
 import lib from './lib'
+import aiAction from './aiPlayer'
 
 /**
  * Triggers game logic when unfilled box gets clicked
@@ -12,10 +13,16 @@ const playerAction = (event, jsBoard) => {
           'filled-board-box') {
     // Player 1 / Player 2
     const player = lib._('playerTurn')
+
     const boxId = event.target.id
+    const box = lib._(boxId)
 
     // boxMark marks html box and returns mark
-    const playerMark = boxMark(player, boxId)
+    const playerMark = boxMark(player, box)
+
+    // to remove eventListener
+    box.outerHTML = box.outerHTML
+
     updateBoardValue(boxId, jsBoard, playerMark)
     const gameOver = isGameOver(jsBoard)
 
@@ -23,6 +30,10 @@ const playerAction = (event, jsBoard) => {
       theWinnerTakesItAll(player)
     } else {
       changeTurn(player)
+
+      if (box.innerHTML === 'X') {
+        aiAction(jsBoard)
+      }
     }
   }
 }
@@ -61,8 +72,7 @@ function updateBoardValue (boxId, jsBoard, playerMark) {
  * @param {HTMLElement} player - current player
  * @param {String} boxId - id of HTML-element
  */
-function boxMark (player, boxId) {
-  const box = lib._(boxId)
+function boxMark (player, box) {
   const mark = player.innerHTML === 'Player 1'
     ? 'X'
     : 'O'
@@ -80,7 +90,7 @@ function boxMark (player, boxId) {
  */
 function changeTurn (player) {
   const newPlayer = player.innerHTML === 'Player 1'
-    ? 'Player 2'
+    ? 'AI'
     : 'Player 1'
 
   player.innerHTML = newPlayer
